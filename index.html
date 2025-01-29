@@ -17,45 +17,92 @@
             margin: 50px auto;
             padding: 20px;
             position: relative;
+            text-align: center;
         }
-        .home-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .button {
             padding: 10px 20px;
             background-color: white;
             border: 1px solid black;
             border-radius: 5px;
             cursor: pointer;
         }
-        .description {
-            color: green;
-            font-size: 20px;
-            margin-top: 50px;
+        
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
         }
-        .links {
+        .photo {
+            width: 200px;
+            height: 300px;
+            background-color: lightyellow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .biography {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none;
+        }
+        footer {
             position: absolute;
             bottom: 10px;
             right: 10px;
         }
-        .links a {
+        footer a {
             color: brown;
             text-decoration: none;
             margin: 0 10px;
         }
-        .links a:hover {
+        footer a:hover {
             text-decoration: underline;
         }
     </style>
+    <script>
+        function showContent(candidate) {
+            let photo = document.querySelector('.photo');
+            let bio = document.querySelector('.biography');
+            
+            if (candidate === 'home') {
+                photo.classList.add('hidden');
+                bio.innerHTML = 'Bienvenido a la página de inicio';
+            } else {
+                photo.classList.remove('hidden');
+                if (candidate === 'candidato1') {
+                    photo.innerHTML = '<img src="noboa.jpg" alt="Foto Candidato 1" width="200" height="300">';
+                    bio.innerHTML = 'Nacido el 1 de noviembre de 1987 en Guayaquil, Daniel Noboa Pontón es un empresario y político ecuatoriano. Es hijo de Álvaro Nobis y de Isabel Pontón, y pertenece a una de las familias más influyentes del país. Antes de asumir la presidencia en 2023, fue asambleísta por Santa Elena entre 2021 y 2023. Durante su mandato, ha implementado estados de emergencia y ha dispuesto la presencia militar en las calles para combatir la delincuencia. En agosto de 2024, fue confirmado como candidato para la reelección en las elecciones de 2025. ';
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <button class="home-button">Home</button>
-        <p class="description">Candidatos presidenciales Ecuador 2025 </p>
-        <div class="links">
+        <div class="button-container">
+            <button class="button" onclick="showContent('home')">Home</button>
+            <button class="button candidate1" onclick="showContent('candidato1')">Candidato 1</button>
+            <button class="button" onclick="showContent('candidato2')">Candidato 2</button>
+            <button class="button" onclick="showContent('candidato3')">Candidato 3</button>
+        </div>
+        <div class="content">
+            <div class="photo hidden">FOTO</div>
+            <div class="biography">Bienvenido a la página de inicio</div>
+        </div>
+        <footer>
             <a href="https://www.presidencia.gob.ec/" target="_blank">Link a la Presidencia</a>
             <a href="https://www.cne.gob.ec/" target="_blank">Link al CNE</a>
-        </div>
+        </footer>
     </div>
 </body>
 </html>
